@@ -18,8 +18,8 @@ class FetchingUsersVC: MainTableViewController { // subclassed MainTableViewCont
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tableView.tableFooterView = UIView()
         self.tableView.backgroundView = activityIndicator
-        
         mainFetchMethod()
     }
 
@@ -37,6 +37,7 @@ class FetchingUsersVC: MainTableViewController { // subclassed MainTableViewCont
                 DispatchQueue.main.async {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     self?.activityIndicator.stopAnimating()
+                    self?.tableView.tableFooterView = nil
                     self?.fetchedUsers = users
                     print("\(self?.view.frame.size.width), collapsed: \(self?.splitViewController?.isCollapsed)")
                     if self?.view.frame.size.height == 414 || UIDevice.current.userInterfaceIdiom == .pad { // firing segue to first currency cell after fetching data

@@ -27,7 +27,7 @@
                             </activityIndicatorView>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOB-It-TwL">
                                 <rect key="frame" x="20" y="84" width="335" height="503"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers </string>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -35,7 +35,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="k4o-mD-vj1">
                                 <rect key="frame" x="119.5" y="607" width="136" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOf-0I-mU1">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOf-0I-mU1">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ZYV-eY-GpJ"/>
@@ -44,6 +44,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="◀︎">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="previousPageWithFollowers:" destination="zql-8b-Ew9" eventType="touchUpInside" id="3mB-ra-7aj"/>
@@ -78,13 +81,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="k4o-mD-vj1" firstAttribute="top" secondItem="rOB-It-TwL" secondAttribute="bottom" constant="20" id="KFb-Ix-S8B"/>
-                            <constraint firstItem="rOB-It-TwL" firstAttribute="top" secondItem="mNf-4V-utd" secondAttribute="bottom" constant="20" id="Nsa-Cf-bOd"/>
+                            <constraint firstItem="rOB-It-TwL" firstAttribute="top" secondItem="mNf-4V-utd" secondAttribute="bottom" constant="20" id="3tj-IO-XeY"/>
+                            <constraint firstItem="rOB-It-TwL" firstAttribute="leading" secondItem="tnT-7U-Jwe" secondAttribute="leading" constant="20" id="7Tp-RH-xRj"/>
                             <constraint firstItem="k4o-mD-vj1" firstAttribute="centerX" secondItem="tnT-7U-Jwe" secondAttribute="centerX" id="S7g-O0-g6Y"/>
+                            <constraint firstItem="k4o-mD-vj1" firstAttribute="top" secondItem="rOB-It-TwL" secondAttribute="bottom" constant="20" id="XfP-0n-cQ7"/>
                             <constraint firstItem="osk-Oh-hgY" firstAttribute="top" secondItem="k4o-mD-vj1" secondAttribute="bottom" constant="20" id="ZfV-nM-dzN"/>
-                            <constraint firstItem="rOB-It-TwL" firstAttribute="leading" secondItem="tnT-7U-Jwe" secondAttribute="leading" constant="20" id="bzQ-Cc-Kpw"/>
                             <constraint firstItem="1dZ-K7-myY" firstAttribute="centerY" secondItem="tnT-7U-Jwe" secondAttribute="centerY" id="mxT-jy-8AL"/>
-                            <constraint firstAttribute="trailing" secondItem="rOB-It-TwL" secondAttribute="trailing" constant="20" id="x8t-PF-2BO"/>
+                            <constraint firstAttribute="trailing" secondItem="rOB-It-TwL" secondAttribute="trailing" constant="20" id="sWg-uH-U6d"/>
                             <constraint firstItem="1dZ-K7-myY" firstAttribute="centerX" secondItem="tnT-7U-Jwe" secondAttribute="centerX" id="xhX-P1-MIl"/>
                         </constraints>
                     </view>
@@ -92,6 +95,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="1dZ-K7-myY" id="Gvu-A8-BD3"/>
                         <outlet property="pageWithFollowersNumber" destination="gg1-l3-2Zl" id="iJw-x5-3H4"/>
+                        <outlet property="previousPageButton" destination="DOf-0I-mU1" id="zMw-wA-Al4"/>
                         <outlet property="textViewWithFollowers" destination="rOB-It-TwL" id="95y-JM-8kT"/>
                     </connections>
                 </viewController>
@@ -122,7 +126,6 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E7Z-up-pQT" customClass="CustomImageView" customModule="Tigusers" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="By2-b1-tBi"/>
                                                         <constraint firstAttribute="width" constant="50" id="jLq-4k-ETQ"/>

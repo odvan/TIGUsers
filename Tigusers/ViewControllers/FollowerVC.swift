@@ -22,15 +22,16 @@ class FollowerVC: UIViewController {
     }
     @IBOutlet weak var pageWithFollowersNumber: UILabel!
     @IBOutlet weak var textViewWithFollowers: UITextView!
-    var number = 1
-    
+    @IBOutlet weak var previousPageButton: UIButton!
+    var number = 1 //default number of pages
    
     // MARK: - VC life cycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-         }
+    
+//        textViewWithFollowers.contentInset = UIEdgeInsetsMake(50, 50, 50, 50)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,7 +48,7 @@ class FollowerVC: UIViewController {
     
     private func fetchFollowers(page: Int) {
         
-        guard user?.followersURL != nil, !String(page).isEmpty
+        guard user?.followersURL != nil, String(page).isEmpty == false
             else { return }
         let url = user!.followersURL + String(page)
         
@@ -90,19 +91,22 @@ class FollowerVC: UIViewController {
     }
     
     
-    // MARK: - Button with methods to show next/previous page of the followers
+    // MARK: - Buttons with methods to show next/previous page of the followers
     
     @IBAction func previousPageWithFollowers(_ sender: UIButton?) {
         number -= 1
-        guard number >= 1 else { number += 1
-            return }
+        if number == 1 {
+            previousPageButton.isEnabled = false
+        }
         
         pageWithFollowersNumber.text = String(number)
         fetchFollowers(page: number)
     }
     @IBAction func nextPageWithFollowers(_ sender: UIButton?) {
         number += 1
-        guard number >= 1 else { return }
+        if number > 1 {
+            previousPageButton.isEnabled = true
+        }
         pageWithFollowersNumber.text = String(number)
         fetchFollowers(page: number)
     }

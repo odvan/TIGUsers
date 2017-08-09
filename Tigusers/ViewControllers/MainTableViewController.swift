@@ -46,7 +46,6 @@ class MainTableViewController: UITableViewController, UISplitViewControllerDeleg
     }
 
 
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
