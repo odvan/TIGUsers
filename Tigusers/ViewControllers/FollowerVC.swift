@@ -58,8 +58,8 @@ class FollowerVC: UIViewController {
                 DispatchQueue.main.async {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     self?.activityIndicator.stopAnimating()
-                    if !users.isEmpty { // in case no more pages with followers
-                    self?.userFollowers = users
+                    if !users.isEmpty { // in case no more pages with followers or no followers
+                        self?.userFollowers = users
                     } else {
                         self?.previousPageWithFollowers(nil)
                     }
@@ -77,7 +77,7 @@ class FollowerVC: UIViewController {
     }
     
     
-    // MARK: - Updating label with User's followers
+    // MARK: - Updating textView with User's followers
     
     private func updateFollowersLabel() {
         var followersForLabel: String = ""
@@ -90,7 +90,7 @@ class FollowerVC: UIViewController {
     }
     
     
-    // MARK: - Button with methods to show next/previous page of followers
+    // MARK: - Button with methods to show next/previous page of the followers
     
     @IBAction func previousPageWithFollowers(_ sender: UIButton?) {
         number -= 1

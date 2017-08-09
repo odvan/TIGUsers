@@ -29,8 +29,8 @@ struct Fetch {
             return
         }
         
-        var urlRequest = URLRequest(url: url)
-        urlRequest.setValue(Config.name, forHTTPHeaderField: "User-Agent") // required header for Git API
+        let urlRequest = URLRequest(url: url)
+//        urlRequest.setValue(Config.name, forHTTPHeaderField: "User-Agent") // required header for Git API
         let taskFetchingUsers = Config.session.dataTask(with: urlRequest) { (data, response, error) in
             
             guard error == nil else {

@@ -28,20 +28,33 @@ class MainTableViewController: UITableViewController, UISplitViewControllerDeleg
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
+         self.clearsSelectionOnViewWillAppear = true
         
         splitViewController?.delegate = self
         splitViewController?.preferredDisplayMode = .allVisible
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        //print("view bounds:\(view.bounds.height)|\(view.bounds.width)")
+        if view.bounds.height == 414 && rowSelectedAtLeastOnce == false { // firing segue to the first currency cell when rotating iPhone6+ to landscape mode
+            firstSegue()
+        }
+
+    }
+
 
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if fetchedUsers == nil {
+            return 0
+        } else {
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,6 +94,7 @@ class MainTableViewController: UITableViewController, UISplitViewControllerDeleg
             
             let user: User
             rowSelectedAtLeastOnce = true
+            collapseDetailViewController = false
             
             let followerNC = segue.destination as! UINavigationController
             let followerVC = followerNC.topViewController as! FollowerVC
