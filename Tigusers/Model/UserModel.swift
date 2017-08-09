@@ -42,7 +42,7 @@ extension User {
         self.id = String(id)
         self.avatar = avatar
         self.profileURL = profileURL
-        self.followersURL = followersURL + "?&per_page=100"
+        self.followersURL = followersURL + "?&per_page=100&page="
 
     }
     

@@ -13,7 +13,6 @@ class FollowerVC: UIViewController {
 
     // MARK: - Constants & Variables
 
-    @IBOutlet weak var followers: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var user: User?
     var userFollowers: [User]? {
@@ -21,8 +20,11 @@ class FollowerVC: UIViewController {
            updateFollowersLabel()
         }
     }
+    @IBOutlet weak var pageWithFollowersNumber: UILabel!
+    @IBOutlet weak var textViewWithFollowers: UITextView!
+    var number = 1
     
-    
+   
     // MARK: - VC life cycle methods
     
     override func viewDidLoad() {
@@ -35,27 +37,43 @@ class FollowerVC: UIViewController {
         
         activityIndicator.startAnimating()
         
-        if let someUser = user {
-            Fetch.users(fromURL: someUser.followersURL) { [weak self] result in
-                
-                switch result {
-                case .Success(let users):
-                    DispatchQueue.main.async {
-                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                        self?.activityIndicator.stopAnimating()
-                        self?.userFollowers = users
-                    }
-                    
-                case .Error(let message):
-                    DispatchQueue.main.async {
-                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                        self?.activityIndicator.stopAnimating()
-                        self?.showAlertWith(title: "Error", message: message)
+        if user != nil {
+            fetchFollowers(page: number)
+        }
+    }
+    
+    
+    // MARK: - Main method for fetching followers (exactly like for users, only different link)
+    
+    private func fetchFollowers(page: Int) {
+        
+        guard user?.followersURL != nil, !String(page).isEmpty
+            else { return }
+        let url = user!.followersURL + String(page)
+        
+        Fetch.users(fromURL: url) { [weak self] result in
+            
+            switch result {
+            case .Success(let users):
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self?.activityIndicator.stopAnimating()
+                    if !users.isEmpty { // in case no more pages with followers
+                    self?.userFollowers = users
+                    } else {
+                        self?.previousPageWithFollowers(nil)
                     }
                 }
+                
+            case .Error(let message):
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self?.activityIndicator.stopAnimating()
+                    self?.showAlertWith(title: "Error", message: message)
+                }
             }
-            
         }
+
     }
     
     
@@ -66,8 +84,28 @@ class FollowerVC: UIViewController {
         for follower in userFollowers! {
             followersForLabel += follower.login + ", "
         }
+        textViewWithFollowers.isHidden = false
         followersForLabel.characters.removeLast(2)
-        followers.text = followersForLabel
+        textViewWithFollowers.text = followersForLabel
     }
+    
+    
+    // MARK: - Button with methods to show next/previous page of followers
+    
+    @IBAction func previousPageWithFollowers(_ sender: UIButton?) {
+        number -= 1
+        guard number >= 1 else { number += 1
+            return }
+        
+        pageWithFollowersNumber.text = String(number)
+        fetchFollowers(page: number)
+    }
+    @IBAction func nextPageWithFollowers(_ sender: UIButton?) {
+        number += 1
+        guard number >= 1 else { return }
+        pageWithFollowersNumber.text = String(number)
+        fetchFollowers(page: number)
+    }
+    
 
 }

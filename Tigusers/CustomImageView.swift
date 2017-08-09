@@ -16,9 +16,7 @@ class CustomImageView: UIImageView {
     var checkURL: String?
     
     func showAvatar(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
-        
-        //print("💩 called")
-        
+                
         image = nil
         checkURL = link
         
