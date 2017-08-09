@@ -18,6 +18,7 @@ struct Config {
     
     // Cell name
     static let userCell = "userCell"
+    // Segue name
     static let followerSegue = "toFollowers"
     
     
