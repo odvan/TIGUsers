@@ -95,14 +95,14 @@ class MainTableViewController: UITableViewController, UISplitViewControllerDeleg
                 
                 if let indexFirst = sender as? IndexPath {
                     user = fetchedUsers![indexFirst.row]
-                    followerVC.title = "\(user.login) followers"
+                    followerVC.title = "\(user.login ?? "") followers"
                     followerVC.user = user
                     
                 } else if let index = self.tableView.indexPathForSelectedRow {
                     print("✝️ index \(index)")
                     
                     user = fetchedUsers![index.row]
-                    followerVC.title = "\(user.login) followers"
+                    followerVC.title = "\(user.login ?? "") followers"
                     followerVC.user = user
                 }
             }

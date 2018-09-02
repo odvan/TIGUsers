@@ -48,9 +48,9 @@ class FollowerVC: UIViewController {
     
     private func fetchFollowers(page: Int) {
         
-        guard user?.followersURL != nil, String(page).isEmpty == false
+        guard let followersURL = user?.followersURL, String(page).isEmpty == false
             else { return }
-        let url = user!.followersURL + String(page)
+        let url = followersURL + String(page)
         
         Fetch.users(fromURL: url) { [weak self] result in
             
@@ -83,10 +83,10 @@ class FollowerVC: UIViewController {
     private func updateFollowersLabel() {
         var followersForLabel: String = ""
         for follower in userFollowers! {
-            followersForLabel += follower.login + ", "
+            followersForLabel += follower.login ?? "" + ", "
         }
         textViewWithFollowers.isHidden = false
-        followersForLabel.characters.removeLast(2)
+        followersForLabel.removeLast(2)
         textViewWithFollowers.text = followersForLabel
     }
     

@@ -39,25 +39,21 @@ struct Fetch {
                 return
             }
             print("🔶 \(response!)")
-            
-            var users: [User] = []
-            
+                        
             guard let data = data else {
                 completion(.Error(error?.localizedDescription ?? "There are no data to show"))
                 return }
             
-            guard let jsonUsers = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [[String : Any]]
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            guard let jsonUsers = try? decoder.decode([User].self, from: data)
                 else {
                     completion(.Error(error?.localizedDescription ?? "There are no users to show"))
                     return }
+        
             
-            for user in jsonUsers {
-                if let someUser = User(json: user) {
-                    users.append(someUser)
-                }
-            }
-            print("users: \(users)")
-            completion(.Success(users))
+            completion(.Success(jsonUsers))
         }
         taskFetchingUsers.resume()
     }
