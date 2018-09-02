@@ -28,7 +28,6 @@ class UserCell: UITableViewCell {
     // MARK: - Populating cell with fetched User properties
     
     func configure(_ userModel: User) {
-        //print("!!!called")
         avatar.showAvatar(link: userModel.avatar)
         login.text = userModel.login
         profileURL.text = userModel.profileURL

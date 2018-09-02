@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum Result <T>{ // completion handler for fetching method
+enum Result <T> {
     case Success(T)
     case Error(String)
 }
@@ -19,7 +19,7 @@ enum Result <T>{ // completion handler for fetching method
 
 struct Fetch {
     
-    static func users(fromURL: String, completion: @escaping (Result<[User]>) -> ()) { // fetching users
+    static func users(fromURL: String, completion: @escaping (Result<[User]>) -> ()) {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         

@@ -30,7 +30,7 @@ struct User {
 
 extension User {
     
-    init?(json: [String : Any]) { // init User model from JSON data
+    init?(json: [String : Any]) { 
         
         guard let login = json["login"] as? String else { return nil }
         let id = json["id"] as? Int ?? 0

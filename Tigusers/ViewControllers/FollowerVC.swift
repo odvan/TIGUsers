@@ -23,7 +23,7 @@ class FollowerVC: UIViewController {
     @IBOutlet weak var pageWithFollowersNumber: UILabel!
     @IBOutlet weak var textViewWithFollowers: UITextView!
     @IBOutlet weak var previousPageButton: UIButton!
-    var number = 1 //default number of pages
+    var number = 1 // default number of pages
    
     // MARK: - VC life cycle methods
     

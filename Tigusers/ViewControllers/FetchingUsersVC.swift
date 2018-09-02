@@ -9,7 +9,7 @@
 import UIKit
 
 
-class FetchingUsersVC: MainTableViewController { // subclassed MainTableViewController for more structured and cleaner code
+class FetchingUsersVC: MainTableViewController { 
 
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!

@@ -11,7 +11,7 @@ import UIKit
 let imgCache = NSCache<AnyObject, AnyObject>()
 
 
-class CustomImageView: UIImageView { // subclassed imageView for custom method for downloading images and put them in cache
+class CustomImageView: UIImageView {
     
     var checkURL: String?
     
@@ -44,7 +44,7 @@ class CustomImageView: UIImageView { // subclassed imageView for custom method f
                     imgCache.setObject(image, forKey: link as AnyObject)
                     
                     DispatchQueue.main.async() { () -> Void in
-                        if self.checkURL == link { // check if url is the same to show proper image after cell reuse
+                        if self.checkURL == link { 
                             self.image = image
                         } else {
                             print("image ignored because of wrong URL")

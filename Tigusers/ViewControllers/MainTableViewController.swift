@@ -49,11 +49,7 @@ class MainTableViewController: UITableViewController, UISplitViewControllerDeleg
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if fetchedUsers == nil {
-            return 0
-        } else {
-            return 1
-        }
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,7 +60,7 @@ class MainTableViewController: UITableViewController, UISplitViewControllerDeleg
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Config.userCell, for: indexPath) as! UserCell
         
-        if let user = fetchedUsers?[indexPath.row] { // at this point fetchedUsers != nil, could use force unwrap
+        if let user = fetchedUsers?[indexPath.row] {
             cell.configure(user)
         }
         return cell
@@ -95,20 +91,20 @@ class MainTableViewController: UITableViewController, UISplitViewControllerDeleg
             rowSelectedAtLeastOnce = true
             collapseDetailViewController = false
             
-            let followerNC = segue.destination as! UINavigationController
-            let followerVC = followerNC.topViewController as! FollowerVC
-            
-            if let indexFirst = sender as? IndexPath {
-                user = fetchedUsers![indexFirst.row]
-                followerVC.title = "\(user.login) followers"
-                followerVC.user = user
+            if let followerNC = segue.destination as? UINavigationController, let followerVC = followerNC.topViewController as? FollowerVC {
                 
-            } else if let index = self.tableView.indexPathForSelectedRow {
-                print("✝️ index \(index)")
-                
-                user = fetchedUsers![index.row]
-                followerVC.title = "\(user.login) followers"
-                followerVC.user = user
+                if let indexFirst = sender as? IndexPath {
+                    user = fetchedUsers![indexFirst.row]
+                    followerVC.title = "\(user.login) followers"
+                    followerVC.user = user
+                    
+                } else if let index = self.tableView.indexPathForSelectedRow {
+                    print("✝️ index \(index)")
+                    
+                    user = fetchedUsers![index.row]
+                    followerVC.title = "\(user.login) followers"
+                    followerVC.user = user
+                }
             }
         }
     }
