@@ -13,12 +13,11 @@
 		C350C1041F3AF19600231F5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C350C1021F3AF19600231F5D /* LaunchScreen.storyboard */; };
 		C350C10C1F3AF2C100231F5D /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C350C10B1F3AF2C100231F5D /* MainTableViewController.swift */; };
 		C350C10E1F3AF3A200231F5D /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C350C10D1F3AF3A200231F5D /* UserCell.swift */; };
+		C38F37D9213DBCA1002CA00F /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38F37D8213DBCA1002CA00F /* UserViewModel.swift */; };
 		C3D1067E1F3AF73E00059A09 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D1067D1F3AF73E00059A09 /* UserModel.swift */; };
 		C3D106801F3B049100059A09 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D1067F1F3B049100059A09 /* Constants.swift */; };
-		C3D106821F3B098B00059A09 /* FetchingUsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D106811F3B098B00059A09 /* FetchingUsersVC.swift */; };
-		C3D106871F3B0B6D00059A09 /* FetchDataMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D106861F3B0B6D00059A09 /* FetchDataMethods.swift */; };
+		C3D106871F3B0B6D00059A09 /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D106861F3B0B6D00059A09 /* FetchData.swift */; };
 		C3D106891F3B13C900059A09 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D106881F3B13C900059A09 /* CustomImageView.swift */; };
-		C3D1068B1F3B39E400059A09 /* FollowerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D1068A1F3B39E400059A09 /* FollowerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +29,11 @@
 		C350C1051F3AF19600231F5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C350C10B1F3AF2C100231F5D /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTableViewController.swift; path = ViewControllers/MainTableViewController.swift; sourceTree = "<group>"; };
 		C350C10D1F3AF3A200231F5D /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCell.swift; path = CustomCells/UserCell.swift; sourceTree = "<group>"; };
+		C38F37D8213DBCA1002CA00F /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		C3D1067D1F3AF73E00059A09 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = Model/UserModel.swift; sourceTree = "<group>"; };
 		C3D1067F1F3B049100059A09 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		C3D106811F3B098B00059A09 /* FetchingUsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchingUsersVC.swift; path = ViewControllers/FetchingUsersVC.swift; sourceTree = "<group>"; };
-		C3D106861F3B0B6D00059A09 /* FetchDataMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchDataMethods.swift; sourceTree = "<group>"; };
+		C3D106861F3B0B6D00059A09 /* FetchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
 		C3D106881F3B13C900059A09 /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
-		C3D1068A1F3B39E400059A09 /* FollowerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FollowerVC.swift; path = ViewControllers/FollowerVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,10 +68,9 @@
 			children = (
 				C350C0F91F3AF19600231F5D /* AppDelegate.swift */,
 				C3D1067F1F3B049100059A09 /* Constants.swift */,
-				C3D106861F3B0B6D00059A09 /* FetchDataMethods.swift */,
-				C3D106881F3B13C900059A09 /* CustomImageView.swift */,
 				C3D106851F3B0A2800059A09 /* ViewControllers */,
 				C3D106831F3B0A1400059A09 /* CustomCells */,
+				C38F37DA213DCAD8002CA00F /* Helpers */,
 				C3D106841F3B0A2000059A09 /* Model */,
 				C350C0FD1F3AF19600231F5D /* Main.storyboard */,
 				C350C1001F3AF19600231F5D /* Assets.xcassets */,
@@ -81,6 +78,15 @@
 				C350C1051F3AF19600231F5D /* Info.plist */,
 			);
 			path = Tigusers;
+			sourceTree = "<group>";
+		};
+		C38F37DA213DCAD8002CA00F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C3D106881F3B13C900059A09 /* CustomImageView.swift */,
+				C3D106861F3B0B6D00059A09 /* FetchData.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		C3D106831F3B0A1400059A09 /* CustomCells */ = {
@@ -94,6 +100,7 @@
 		C3D106841F3B0A2000059A09 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C38F37D8213DBCA1002CA00F /* UserViewModel.swift */,
 				C3D1067D1F3AF73E00059A09 /* UserModel.swift */,
 			);
 			name = Model;
@@ -103,8 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				C350C10B1F3AF2C100231F5D /* MainTableViewController.swift */,
-				C3D106811F3B098B00059A09 /* FetchingUsersVC.swift */,
-				C3D1068A1F3B39E400059A09 /* FollowerVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -183,12 +188,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3D106801F3B049100059A09 /* Constants.swift in Sources */,
+				C38F37D9213DBCA1002CA00F /* UserViewModel.swift in Sources */,
 				C3D106891F3B13C900059A09 /* CustomImageView.swift in Sources */,
-				C3D106871F3B0B6D00059A09 /* FetchDataMethods.swift in Sources */,
+				C3D106871F3B0B6D00059A09 /* FetchData.swift in Sources */,
 				C350C10C1F3AF2C100231F5D /* MainTableViewController.swift in Sources */,
 				C350C0FA1F3AF19600231F5D /* AppDelegate.swift in Sources */,
-				C3D1068B1F3B39E400059A09 /* FollowerVC.swift in Sources */,
-				C3D106821F3B098B00059A09 /* FetchingUsersVC.swift in Sources */,
 				C3D1067E1F3AF73E00059A09 /* UserModel.swift in Sources */,
 				C350C10E1F3AF3A200231F5D /* UserCell.swift in Sources */,
 			);

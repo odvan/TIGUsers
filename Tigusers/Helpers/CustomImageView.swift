@@ -10,7 +10,6 @@ import UIKit
 
 let imgCache = NSCache<AnyObject, AnyObject>()
 
-
 class CustomImageView: UIImageView {
     
     var checkURL: String?
@@ -35,10 +34,7 @@ class CustomImageView: UIImageView {
                     let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                     let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
                     let data = data, error == nil
-                    
                     else { return }
-                
-                //print("\(response)")
                 
                 if let image = UIImage(data: data) {
                     imgCache.setObject(image, forKey: link as AnyObject)

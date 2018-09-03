@@ -8,46 +8,65 @@
 
 import UIKit
 
-class MainTableViewController: UITableViewController, UISplitViewControllerDelegate {
+class MainTableViewController: UITableViewController {
     
     
     // MARK: - Constants & Variables
-
-    var fetchedUsers: [User]? { // our model
+    
+    private var activityIndicator = UIActivityIndicatorView()
+    private var fetchedUsers: [UserViewModel]? {
         didSet {
             self.tableView.reloadData()
         }
     }
-    var collapseDetailViewController = true
-    var rowSelectedAtLeastOnce = false
+    var link = Config.defaultURL
     
-
+    
     // MARK: - VC life cycle methods
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = true
         
-        splitViewController?.delegate = self
-        splitViewController?.preferredDisplayMode = .allVisible
-
+        // Uncomment the following line to preserve selection between presentations
+        self.clearsSelectionOnViewWillAppear = true
+        
+        self.tableView.tableFooterView = UIView()
+        setActivityIndicator()
+        fetchUsers(link: self.link)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    private func fetchUsers(link: String) {
         
-        //print("view bounds:\(view.bounds.height)|\(view.bounds.width)")
-        if view.bounds.height == 414 && rowSelectedAtLeastOnce == false { // firing segue to the first currency cell when rotating iPhone6+ to landscape mode
-            firstSegue()
+        activityIndicator.startAnimating()
+        
+        Fetch.users(fromURL: link) { [weak self] result in
+            switch result {
+            case .Success(let users):
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self?.activityIndicator.stopAnimating()
+                    self?.tableView.tableFooterView = nil
+                    self?.fetchedUsers = users.map({ return UserViewModel(user: $0) })
+                }
+                
+            case .Error(let message):
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self?.activityIndicator.stopAnimating()
+                    self?.showAlertWith(title: "Error", message: message)
+                }
+            }
         }
-
     }
-
-
+    
+    private func setActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.tableView.backgroundView = activityIndicator
+    }
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -55,7 +74,6 @@ class MainTableViewController: UITableViewController, UISplitViewControllerDeleg
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedUsers?.count ?? 0
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Config.userCell, for: indexPath) as! UserCell
@@ -64,62 +82,18 @@ class MainTableViewController: UITableViewController, UISplitViewControllerDeleg
             cell.configure(user)
         }
         return cell
-        
     }
     
-    
-    // MARK: - UISplitViewControllerDelegate
-    
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print(" 💔 💔 💔 ")
-        return collapseDetailViewController
-    }
-    
-
-    // MARK: - Navigation
-     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // casual data preparation for sending to FollowersVC
+        guard let user = fetchedUsers?[indexPath.row] else { return }
         
-        if segue.identifier == Config.followerSegue {
-            
-            guard fetchedUsers != nil else
-            { print("error: no data")
-                return }
-            
-            let user: User
-            rowSelectedAtLeastOnce = true
-            collapseDetailViewController = false
-            
-            if let followerNC = segue.destination as? UINavigationController, let followerVC = followerNC.topViewController as? FollowerVC {
-                
-                if let indexFirst = sender as? IndexPath {
-                    user = fetchedUsers![indexFirst.row]
-                    followerVC.title = "\(user.login ?? "") followers"
-                    followerVC.user = user
-                    
-                } else if let index = self.tableView.indexPathForSelectedRow {
-                    print("✝️ index \(index)")
-                    
-                    user = fetchedUsers![index.row]
-                    followerVC.title = "\(user.login ?? "") followers"
-                    followerVC.user = user
-                }
-            }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let followersVC = storyboard.instantiateViewController(withIdentifier: Config.mainTVC) as? MainTableViewController {
+            followersVC.link = user.followersURL
+            self.navigationController?.pushViewController(followersVC, animated: true)
         }
     }
-    
-    func firstSegue() { // Show first cell after fetching data in detail VC
-        rowSelectedAtLeastOnce = true
-        print("It's iPhone Plus in landscape mode or iPad, collapsed: \(splitViewController?.isCollapsed), view bounds:\(view.bounds.height)|\(view.bounds.width)")
-        let initialIndexPath = IndexPath(row: 0, section: 0)
-        self.tableView.selectRow(at: initialIndexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
-        
-        self.performSegue(withIdentifier: Config.followerSegue, sender: initialIndexPath)
-        collapseDetailViewController = false
-    }
-
-
 }
 
 
@@ -135,6 +109,5 @@ extension UIViewController {
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
     }
-    
 }
 

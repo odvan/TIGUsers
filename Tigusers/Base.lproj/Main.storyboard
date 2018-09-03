@@ -1,112 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1611" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oH1-A7-aNX">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Z0c-XP-YHV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--FollowerVC-->
-        <scene sceneID="cc9-HP-i6q">
-            <objects>
-                <viewController id="zql-8b-Ew9" customClass="FollowerVC" customModule="Tigusers" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="mNf-4V-utd"/>
-                        <viewControllerLayoutGuide type="bottom" id="osk-Oh-hgY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tnT-7U-Jwe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="1dZ-K7-myY">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </activityIndicatorView>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOB-It-TwL">
-                                <rect key="frame" x="20" y="84" width="335" height="503"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers Followers </string>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="k4o-mD-vj1">
-                                <rect key="frame" x="119.5" y="607" width="136" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOf-0I-mU1">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="ZYV-eY-GpJ"/>
-                                            <constraint firstAttribute="width" constant="40" id="g8S-el-x0C"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="◀︎">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="disabled">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="previousPageWithFollowers:" destination="zql-8b-Ew9" eventType="touchUpInside" id="3mB-ra-7aj"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gg1-l3-2Zl">
-                                        <rect key="frame" x="48" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="h7X-jH-oks"/>
-                                            <constraint firstAttribute="height" constant="40" id="tTR-DS-PO6"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j35-L2-7Rm">
-                                        <rect key="frame" x="96" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="551-rq-vkw"/>
-                                            <constraint firstAttribute="height" constant="40" id="ITp-T4-zfO"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="▶︎">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="nextPageWithFollowers:" destination="zql-8b-Ew9" eventType="touchUpInside" id="uk7-Ry-nct"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="rOB-It-TwL" firstAttribute="top" secondItem="mNf-4V-utd" secondAttribute="bottom" constant="20" id="3tj-IO-XeY"/>
-                            <constraint firstItem="rOB-It-TwL" firstAttribute="leading" secondItem="tnT-7U-Jwe" secondAttribute="leading" constant="20" id="7Tp-RH-xRj"/>
-                            <constraint firstItem="k4o-mD-vj1" firstAttribute="centerX" secondItem="tnT-7U-Jwe" secondAttribute="centerX" id="S7g-O0-g6Y"/>
-                            <constraint firstItem="k4o-mD-vj1" firstAttribute="top" secondItem="rOB-It-TwL" secondAttribute="bottom" constant="20" id="XfP-0n-cQ7"/>
-                            <constraint firstItem="osk-Oh-hgY" firstAttribute="top" secondItem="k4o-mD-vj1" secondAttribute="bottom" constant="20" id="ZfV-nM-dzN"/>
-                            <constraint firstItem="1dZ-K7-myY" firstAttribute="centerY" secondItem="tnT-7U-Jwe" secondAttribute="centerY" id="mxT-jy-8AL"/>
-                            <constraint firstAttribute="trailing" secondItem="rOB-It-TwL" secondAttribute="trailing" constant="20" id="sWg-uH-U6d"/>
-                            <constraint firstItem="1dZ-K7-myY" firstAttribute="centerX" secondItem="tnT-7U-Jwe" secondAttribute="centerX" id="xhX-P1-MIl"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="pFn-Dg-HdJ"/>
-                    <connections>
-                        <outlet property="activityIndicator" destination="1dZ-K7-myY" id="Gvu-A8-BD3"/>
-                        <outlet property="pageWithFollowersNumber" destination="gg1-l3-2Zl" id="iJw-x5-3H4"/>
-                        <outlet property="previousPageButton" destination="DOf-0I-mU1" id="zMw-wA-Al4"/>
-                        <outlet property="textViewWithFollowers" destination="rOB-It-TwL" id="95y-JM-8kT"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GYz-T1-VYd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1280.8" y="515.8920539730135"/>
-        </scene>
         <!--TIGUsers-->
         <scene sceneID="T6a-TZ-wTy">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="NRQ-j1-UxY" customClass="FetchingUsersVC" customModule="Tigusers" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="mainTVC" clearsSelectionOnViewWillAppear="NO" id="NRQ-j1-UxY" customClass="MainTableViewController" customModule="Tigusers" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="Moi-ZR-NMH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cDC-CB-g2r" id="56B-hX-ubY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ByT-Zc-m6s">
@@ -164,7 +70,6 @@
                                     <outlet property="avatar" destination="E7Z-up-pQT" id="GLz-iM-eEf"/>
                                     <outlet property="login" destination="XPV-It-z4y" id="TCw-Bh-dcW"/>
                                     <outlet property="profileURL" destination="4eK-xv-v9q" id="rma-R4-foP"/>
-                                    <segue destination="6Lr-ia-ZoM" kind="showDetail" identifier="toFollowers" id="Dar-0H-eHn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -174,16 +79,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="TIGUsers" id="GSd-pk-2tC"/>
-                    <connections>
-                        <outlet property="activityIndicator" destination="6da-1B-seY" id="hHH-2i-R8U"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7WI-G4-CzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="6da-1B-seY">
-                    <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                </activityIndicatorView>
             </objects>
             <point key="canvasLocation" x="1281" y="-225"/>
         </scene>
@@ -192,7 +89,7 @@
             <objects>
                 <navigationController id="Z0c-XP-YHV" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="o1t-JK-wXl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -207,42 +104,5 @@
             </objects>
             <point key="canvasLocation" x="430" y="-225"/>
         </scene>
-        <!--Split View Controller-->
-        <scene sceneID="wIo-4T-Nv0">
-            <objects>
-                <splitViewController id="oH1-A7-aNX" sceneMemberID="viewController">
-                    <connections>
-                        <segue destination="Z0c-XP-YHV" kind="relationship" relationship="masterViewController" id="mn0-4y-2oM"/>
-                        <segue destination="6Lr-ia-ZoM" kind="relationship" relationship="detailViewController" id="V7L-dv-p1k"/>
-                    </connections>
-                </splitViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zby-Y1-hFt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-522" y="102"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CJx-wd-LPA">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Lr-ia-ZoM" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DQ7-7B-gm8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="zql-8b-Ew9" kind="relationship" relationship="rootViewController" id="4b8-4h-cT9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WXR-TR-Jxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="429.60000000000002" y="515.8920539730135"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Dar-0H-eHn"/>
-    </inferredMetricsTieBreakers>
 </document>

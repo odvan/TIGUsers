@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct User: Decodable, Equatable {
     
     let login: String?
@@ -31,5 +30,6 @@ struct User: Decodable, Equatable {
         id = try? values.decode(String.self, forKey: .id)
         avatar = try? values.decode(String.self, forKey: .avatar)
         profileURL = try? values.decode(String.self, forKey: .profileURL)
-        followersURL = try? values.decode(String.self, forKey: .followersURL) + "?&per_page=100&page="
+        followersURL = try? values.decode(String.self, forKey: .followersURL) + Config.endUrl
     }
+}

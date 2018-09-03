@@ -10,12 +10,10 @@ import UIKit
 
 class UserCell: UITableViewCell {
     
-    
     @IBOutlet weak var avatar: CustomImageView!
     @IBOutlet weak var login: UILabel!
     @IBOutlet weak var profileURL: UILabel!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,17 +21,13 @@ class UserCell: UITableViewCell {
         customizeImageView()
         setOpaqueBackground()
     }
-
     
     // MARK: - Populating cell with fetched User properties
     
-    func configure(_ userModel: User) {
-        if let avatar = userModel.avatar {
-            self.avatar.showAvatar(link: avatar)
-        }
+    func configure(_ userModel: UserViewModel) {
+        avatar.showAvatar(link: userModel.avatar)
         login.text = userModel.login
         profileURL.text = userModel.profileURL
-        
     }
     
     // MARK: - CustomImageView tweakings
@@ -44,9 +38,7 @@ class UserCell: UITableViewCell {
         avatar.layer.borderWidth = 1
         avatar.layer.borderColor = UIColor.lightGray.cgColor
     }
-
 }
-
 
 // MARK: - Setting cell opaque background
 
@@ -59,6 +51,5 @@ private extension UserCell {
         login.alpha = 1.0
         profileURL.alpha = 1.0
         avatar.backgroundColor = UserCell.defaultBackgroundColor
-        
     }
 }

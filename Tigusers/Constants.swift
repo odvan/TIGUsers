@@ -13,13 +13,14 @@ struct Config {
     
     // URL constants
     static let session = URLSession.shared
-    static let defaultURL = "https://api.github.com/users?since=0&per_page=100"
+    static let endUrl = "?&per_page=100&page="
+    static let defaultURL = "https://api.github.com/users?since=0" + endUrl
+    
+    // VC name & id
     static let name = "Tigusers"
+    static let mainTVC = "mainTVC"
     
     // Cell name
-    static let userCell = "userCell"
-    // Segue name
-    static let followerSegue = "toFollowers"
-    
+    static let userCell = "userCell"    
 }
 

@@ -14,9 +14,6 @@ enum Result <T> {
     case Error(String)
 }
 
-
-// Method for fetching GitHub users
-
 struct Fetch {
     
     static func users(fromURL: String, completion: @escaping (Result<[User]>) -> ()) {
@@ -25,21 +22,17 @@ struct Fetch {
         
         guard let url = URL(string: fromURL) else {
             completion(.Error("Invalid URL, we can't update your feed"))
-            print("Invalid URL, we can't update your feed")
             return
         }
         
         let urlRequest = URLRequest(url: url)
-//        urlRequest.setValue(Config.name, forHTTPHeaderField: "User-Agent") // required header for Git API
         let taskFetchingUsers = Config.session.dataTask(with: urlRequest) { (data, response, error) in
             
             guard error == nil else {
                 completion(.Error(error!.localizedDescription))
-                print("error while fecthing data: \(error!.localizedDescription)")
                 return
             }
-            print("🔶 \(response!)")
-                        
+            
             guard let data = data else {
                 completion(.Error(error?.localizedDescription ?? "There are no data to show"))
                 return }
@@ -52,7 +45,6 @@ struct Fetch {
                     completion(.Error(error?.localizedDescription ?? "There are no users to show"))
                     return }
         
-            
             completion(.Success(jsonUsers))
         }
         taskFetchingUsers.resume()
